@@ -1,0 +1,24 @@
+# main.py
+
+# Importamos el Controlador que orquestara la aplicacion
+from controlador import Controlador 
+
+class Principal:
+    """Clase Principal: Contiene el metodo main y arranca la aplicacion."""
+    
+    @staticmethod
+    def main():
+        # 1. Instancia el Controlador
+        controlador = Controlador()
+        
+        # 2. Inicia la operacion principal del programa
+        print("INICIO DEL PROGRAMA (El Controlador toma el control...)")
+        
+        controlador.tomar_numero() 
+        controlador.imprimir_numero() 
+        
+        print("\nFIN DEL PROGRAMA")
+
+# Ejecucion del programa
+if __name__ == "__main__":
+    Principal.main()
