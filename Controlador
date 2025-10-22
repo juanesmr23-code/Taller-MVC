@@ -1,0 +1,39 @@
+# controlador.py
+
+# Importamos las clases de las otras capas
+from modelo import Numero
+from vista import Vista_formulario
+
+class Controlador:
+    """Clase Controlador: Coordina la Vista y el Modelo (Composicion)."""
+    
+    def __init__(self):
+        # Composicion: El Controlador crea y es dueno de la Vista y el Modelo
+        self.obj_vista = Vista_formulario() 
+        self.obj_numero = Numero()
+
+    def tomar_numero(self) -> None:
+        """
+        Controla el flujo para obtener el numero, guardarlo y validar su logica.
+        """
+        # 1. Controlador pide la entrada a la Vista (V)
+        nuevo_dato = self.obj_vista.pedir_numero()
+        
+        # 2. Controlador manipula el Modelo (M): Guarda el dato
+        self.obj_numero.set_numero(nuevo_dato)
+        
+        # 3. Controlador pide al Modelo (M) que aplique la logica de negocio
+        mensaje_validacion = self.obj_numero.validar_numero(nuevo_dato)
+        
+        # 4. Controlador envia el resultado a la Vista (V) para que se muestre
+        self.obj_vista.imprimir_mensaje(mensaje_validacion)
+
+    def imprimir_numero(self) -> None:
+        """
+        Controla el flujo para obtener el dato del Modelo e imprimirlo.
+        """
+        # 1. Obtiene el dato del Modelo (M)
+        dato_actual = self.obj_numero.get_numero()
+        
+        # 2. Lo envia a la Vista (V) para imprimir
+        self.obj_vista.imprimir_numero(dato_actual)
