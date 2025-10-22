@@ -1,0 +1,28 @@
+# vista.py
+
+class Vista_formulario:
+    """Clase Vista: Se encarga de mostrar al usuario y recibir entradas."""
+    
+    titulo: str = "--- Programa de Validacion de Numeros ---"
+    pregunta_campo: str = "Ingrese un numero entero: "
+    
+    def pedir_numero(self) -> int:
+        """Muestra el campo y recibe la entrada del usuario."""
+        print("\n" + self.titulo)
+        
+        while True:
+            try:
+                # La Vista solo se encarga de la I/O (Input/Output)
+                entrada = input(self.pregunta_campo).strip()
+                dato = int(entrada)
+                return dato
+            except ValueError:
+                print("Error: Por favor, ingrese un numero entero valido.")
+
+    def imprimir_mensaje(self, dato_mensaje: str) -> None:
+        """Imprime cualquier mensaje de resultado/salida al usuario."""
+        print(f"\n[Resultado] {dato_mensaje}")
+
+    def imprimir_numero(self, dato_numero: int) -> None:
+        """Imprime el numero que fue procesado (ej. para verificacion)."""
+        print(f"[Modelo] El numero procesado en el Modelo fue: {dato_numero}")
