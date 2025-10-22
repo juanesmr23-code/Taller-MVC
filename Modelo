@@ -1,0 +1,36 @@
+# modelo.py
+
+class Numero:
+    """Clase Modelo: Contiene el dato y la logica de validacion."""
+    
+    def __init__(self):
+        self._dato_numero = 0  # El dato del dominio
+
+    def get_numero(self) -> int:
+        """Expone el dato para que el Controlador pueda leerlo."""
+        return self._dato_numero
+
+    def set_numero(self, nuevo_numero: int) -> None:
+        """Manipula/guarda el dato."""
+        self._dato_numero = nuevo_numero
+
+    def validar_numero(self, dato_numero: int) -> str:
+        """
+        Logica de negocio: Valida el numero (par/impar, positivo/negativo).
+        Independiente de la interfaz de usuario.
+        """
+        mensaje = f"El numero {dato_numero} es "
+        
+        # Validar par/impar
+        if dato_numero % 2 == 0:
+            mensaje += "PAR y "
+        else:
+            mensaje += "IMPAR y "
+            
+        # Validar positivo/negativo
+        if dato_numero >= 0:
+            mensaje += "POSITIVO."
+        else:
+            mensaje += "NEGATIVO."
+            
+        return mensaje
